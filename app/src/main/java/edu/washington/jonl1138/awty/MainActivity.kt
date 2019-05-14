@@ -87,9 +87,10 @@ class MainActivity : AppCompatActivity() {
         val i = Intent(this, AlertBroadcastReceiver::class.java)
         i.putExtra("PHONE", phoneNumber)
         i.putExtra("MESSAGE", message)
-        Log.d("debugging", "Extra placed in intent: " + i.hasExtra("PHONE").toString())
-        pendingIntent = PendingIntent.getBroadcast(this, 0, i, Intent.FILL_IN_DATA)
-        alarmManager!!.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (minutes * 60000), (minutes * 60000).toLong(), pendingIntent)
+        Log.d("debugging", "Message extra placed in intent: " + i.hasExtra("PHONE").toString())
+        Log.d("debugging", "Message extra placed in intent: " + i.hasExtra("MESSAGE").toString())
+        pendingIntent = PendingIntent.getBroadcast(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT)
+        alarmManager!!.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() /*+ (minutes * 60000)*/, (minutes * 60000).toLong(), pendingIntent)
 
     }
 

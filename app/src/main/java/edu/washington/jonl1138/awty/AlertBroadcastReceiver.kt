@@ -11,7 +11,8 @@ class AlertBroadcastReceiver: BroadcastReceiver() {
         Log.d("debugging", "Reached Broadcast Receiver")
         val phoneNumber = intent!!.getStringExtra("PHONE")
         val message = intent!!.getStringExtra("MESSAGE")
-        Log.d("debugging", "Intent has been received " + intent.hasExtra("PHONE").toString())
+        Log.d("debugging", "Message intent has been received " + intent.hasExtra("MESSAGE").toString())
+        Log.d("debugging", "Phone intent has been received " + intent.hasExtra("PHONE").toString())
         val completedMessage = phoneNumber + ": " + message
         val toast: Toast = Toast.makeText(context, completedMessage, Toast.LENGTH_LONG)
         toast.show()
